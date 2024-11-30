@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="omikuji()">占え、己の定めを...</button>
+    <div id="omikuji">おみくじの結果を表示</div>
+    <script>
+      function omikuji() {
+        var omikuji = new Array(
+          "大吉",
+          "中吉",
+          "小吉",
+          "凶",
+          "大凶",
+          "大・大吉",
+          "判定不能"
+        );
+        var object = document.getElementById("omikuji");
+        object.innerText = omikuji[Math.floor(Math.random() * omikuji.length)];
+      }
+    </script>
+  </body>
+</html>

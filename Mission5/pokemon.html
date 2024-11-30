@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pokemon</title>
+  </head>
+  <body>
+    <label for="pokemonId">ポケモンの番号を入力してください</label>
+    <input type="number" id="pokemonId" min="1" placeholder="例:1 フシギダネ" />
+    <button id="fetchButton">表示</button>
+    <p id="txtNo">{ポケモンの番号}</p>
+    <img src="{ポケモンの画像}" alt="画像" loading="lazy" id="imgPokemon" />
+    <p id="txtType">{ポケモンのタイプ}</p>
+    <p id="txtPokemon">{ポケモンの名前}</p>
+    <script src="pokemon.js"></script>
+  </body>
+</html>
