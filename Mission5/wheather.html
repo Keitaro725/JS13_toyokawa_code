@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>天気予報API</title>
+    <!--表示スタイルの設定-->
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      input,
+      button {
+        padding: 10px;
+        margin: 10px;
+        font-size: 16px;
+      }
+      .wheather-info {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>天気予報を確認しよう</h1>
+    <p>都市名を入力してください</p>
+    <input type="text" , id="city" placeholder="例：Tokyo" />
+    <button onclick="getWeather()">天気を取得</button>
+    <!--天気情報を表示-->
+    <div class="wheather-info" id="weatherInfo"></div>
+
+    <script>
+      async function getWeather() {
+        const city = document.getElementById("city").value;
+        const apiKey = "YOUR_API_KEY";
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=ja&units=metric`;
+
+        try {
+          //エラー処理
+          const response = await fetch(url);
+          const data = await response.json();
+
+          //天気情報
+
+          const weatherInfo = `
+              <p><strong>${data.name}</strong>の天気</p>
+              <p>気温: ${data.main.temp}°C</p>
+              <p>天候: ${data.weather[0].description}</p>
+              <p>湿度: ${data.main.humidity}%</p>
+              `;
+          document.getElementById("weatherInfo").innerHTML = weatherInfo;
+        } catch (error) {
+          document.getElementById(
+            "weatherInfo"
+          ).innerHTML = `<p style = "color:red;"> ${error.message}</p>`;
+        }
+      }
+    </script>
+  </body>
+</html>
